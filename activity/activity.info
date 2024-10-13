@@ -1,0 +1,9 @@
+[Activity]
+name = Game of Logic
+activity_version = 1
+bundle_id = org.sugarlabs.gameoflogic
+icon = logic
+exec = sugar-activity3 activity.LogicGameActivity
+license = GPLv3+
+summary = Implementation of Lewis Carrol's Game of Logic
+repository = https://github.com/sugarlabs/game-of-logic.git
