@@ -19,7 +19,6 @@ from gi.repository import Gtk
 import config
 from views import game
 from views import help
-from views import settings
 
 
 class LogicGame:
@@ -54,9 +53,6 @@ class LogicGame:
     def show_help(self):
         self.set_screen(help.view)
 
-    def show_settings(self):
-        self.set_screen(settings.view)
-
     def run(self):
         self.gameDisplay = pygame.display.get_surface()
         self.info = pygame.display.Info()
@@ -65,7 +61,7 @@ class LogicGame:
         config.load_images()
         config.font.intialize("./Geist.ttf")
 
-        # self.set_screen(game.view)
+        self.set_screen(game.view)
 
         if not self.gameDisplay:
             self.gameDisplay = pygame.display.set_mode(

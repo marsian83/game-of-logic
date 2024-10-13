@@ -14,23 +14,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import os
 import pygame
-from font import Font
 
 
-font = Font()
-images = {}
-# 0 -> Unmarked; 1 -> Empty; 2 -> Some; 3 -> Division
-state_colors = [(180, 180, 183), (242, 108, 79), (124, 197, 118), (255, 245, 104)]
+class Font:
+    def __init__(self):
+        self.sm = None
+        self.md = None
+        self.lg = None
+        self.xl = None
+        self.xxl = None
 
-def load_images():
-    directory = f"images"
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
-        try:
-            image = pygame.image.load(file_path)
-            base_filename = os.path.splitext(filename)[0]
-            images[base_filename] = image
-        except pygame.error as err:
-            print(f"Error loading image '{file_path}': {err}")
+    def intialize(self, file):
+        self.sm = self.load_font(file, 10)
+        self.md = self.load_font(file, 16)
+        self.lg = self.load_font(file, 20)
+        self.xl = self.load_font(file, 26)
+        self.xxl = self.load_font(file, 36)
+
+    def load_font(self, file, size):
+        return pygame.font.Font(file, size)

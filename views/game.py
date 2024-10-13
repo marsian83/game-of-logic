@@ -13,24 +13,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import config
 
-import os
-import pygame
-from font import Font
+from components.Bilateral import Bilateral
 
 
-font = Font()
-images = {}
-# 0 -> Unmarked; 1 -> Empty; 2 -> Some; 3 -> Division
-state_colors = [(180, 180, 183), (242, 108, 79), (124, 197, 118), (255, 245, 104)]
+def view(game):
+    vw = game.vw
+    vh = game.vh
 
-def load_images():
-    directory = f"images"
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
-        try:
-            image = pygame.image.load(file_path)
-            base_filename = os.path.splitext(filename)[0]
-            images[base_filename] = image
-        except pygame.error as err:
-            print(f"Error loading image '{file_path}': {err}")
+    buttons = []
+    bilateral = Bilateral(vw(50) - vh(30), vh(50) - vh(25), h = vh(60))
+
+    def update():
+        bilateral.update()
+        
+        for btn in buttons:
+            btn.update()
+
+    game.update_function = update
