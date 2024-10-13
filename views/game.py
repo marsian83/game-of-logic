@@ -15,7 +15,7 @@
 
 import config
 
-from components.Bilateral import Bilateral
+from components.Trilateral import Trilateral
 
 
 def view(game):
@@ -23,11 +23,11 @@ def view(game):
     vh = game.vh
 
     buttons = []
-    bilateral = Bilateral(vw(50) - vh(30), vh(50) - vh(25), h = vh(60))
+    bilateral = Trilateral(vw(50) - vh(30), vh(50) - vh(25), h = vh(60))
 
     def update():
         bilateral.update()
-        
+
         for btn in buttons:
             btn.update()
 
